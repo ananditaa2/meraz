@@ -21,12 +21,29 @@ An interactive, abandoned Windows 98 computer experience where judges and visito
 
 ---
 
+## 🏆 Key Standout Features (Top 1% Hackathon Differentiators)
+
+1. **ICQ 98a Instant Messenger ("The Digital Ghost")**:
+   - An authentic late-90s ICQ chat client connects to **David [The Last User]**.
+   - Features the iconic synthesized **"Uh-oh!"** notification sound.
+   - Reacts dynamically as you uncover clues and unlock the vault.
+   - Visitors can ask interactive questions (*"Who are you?"*, *"What happened in 1998?"*, *"What is the password?"*) to piece together the narrative.
+
+2. **WinAMP 2.0 Audio Player with Live Equalizer**:
+   - Classic titanium Winamp skin with green LED timer and marquee track title display.
+   - Real-time 8-band animated graphic equalizer visualizer.
+   - Working Web Audio API synthesizer playing:
+     - `01. 1998 Midnight Lab (Synthwave Lo-Fi)`
+     - `02. Corrupted Audio Log - Oct 31 1998 (Radio Drone)`
+
+---
+
 ## 🕵️ The Mystery & Solution Guide
 1. **Initial Desktop**:
    - The user is welcomed by a retro startup chime and a notification: *"Welcome back, User. Last session: October 31, 1998."*
 2. **Explore `C:\My Documents`**:
    - Double-click **My Documents** to reveal:
-     - `Read_Me_First.txt`: Warns the user not to delete anything and not to trust the computer clock.
+     - `Read_Me_First.txt`: Warns the user not to delete anything and not to trust the computer clock (triggers the ICQ ghost chat!).
      - `personal_diary.txt`: Explains the closing of the lab and hints at the century digits: **`19--`**.
      - `old_email.eml`: An authentic 1998 email from Arthur referencing their launch poster year: **`98`**.
      - `IMPORTANT.txt`: Contains an explicit warning; opening it triggers **Easter Egg 5** (*"Why would you do that? The instructions were literally written above."*).
@@ -57,6 +74,6 @@ An interactive, abandoned Windows 98 computer experience where judges and visito
 
 ## 🎨 Visual & Technical Details
 - Authentic Windows 98 3D beveled borders, gradients, and custom SVG pixel icons.
-- Web Audio API synthesizer for zero-dependency retro sound effects (startup chord, clicks, dings, errors, fanfare).
+- Web Audio API synthesizer for zero-dependency retro sound effects (startup chord, clicks, dings, errors, ICQ "Uh-oh!", Winamp synthwave).
 - CRT scanline filter toggle in Start Menu -> Settings.
 - Full LocalStorage persistence with a **Reset Mystery** option in Settings so judges can replay anytime.

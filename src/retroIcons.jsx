@@ -196,3 +196,34 @@ export function SpeakerIcon({ size = 16, muted = false }) {
     </svg>
   );
 }
+
+export function ICQIcon({ size = 32 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 32 32" style={{ imageRendering: 'pixelated' }}>
+      {/* ICQ Flower Icon: 8 petals */}
+      <circle cx="16" cy="16" r="4.5" fill="#f1c40f" stroke="#000" strokeWidth="1" />
+      {/* 7 Green Petals + 1 Red Petal */}
+      <ellipse cx="16" cy="7" rx="3" ry="4.5" fill="#e74c3c" stroke="#000" strokeWidth="0.8" />
+      <ellipse cx="22" cy="10" rx="3" ry="4" fill="#2ecc71" stroke="#000" strokeWidth="0.8" transform="rotate(45 22 10)" />
+      <ellipse cx="25" cy="16" rx="4.5" ry="3" fill="#2ecc71" stroke="#000" strokeWidth="0.8" />
+      <ellipse cx="22" cy="22" rx="3" ry="4" fill="#2ecc71" stroke="#000" strokeWidth="0.8" transform="rotate(-45 22 22)" />
+      <ellipse cx="16" cy="25" rx="3" ry="4.5" fill="#2ecc71" stroke="#000" strokeWidth="0.8" />
+      <ellipse cx="10" cy="22" rx="3" ry="4" fill="#2ecc71" stroke="#000" strokeWidth="0.8" transform="rotate(45 10 22)" />
+      <ellipse cx="7" cy="16" rx="4.5" ry="3" fill="#2ecc71" stroke="#000" strokeWidth="0.8" />
+      <ellipse cx="10" cy="10" rx="3" ry="4" fill="#2ecc71" stroke="#000" strokeWidth="0.8" transform="rotate(-45 10 10)" />
+    </svg>
+  );
+}
+
+export function WinampIcon({ size = 32 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 32 32" style={{ imageRendering: 'pixelated' }}>
+      {/* Metallic Winamp badge */}
+      <rect x="3" y="3" width="26" height="26" rx="4" fill="#2c3e50" stroke="#f39c12" strokeWidth="1.5" />
+      <rect x="5" y="5" width="22" height="22" fill="#1a252f" />
+      {/* Iconic Lightning Bolt */}
+      <polygon points="18,5 8,17 15,17 13,27 24,14 17,14" fill="#f1c40f" stroke="#e67e22" strokeWidth="0.8" />
+    </svg>
+  );
+}
+

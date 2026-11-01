@@ -5,13 +5,17 @@ import {
   RecycleBinIcon,
   NotepadIcon,
   InternetExplorerIcon,
-  SecretVaultIcon
+  SecretVaultIcon,
+  ICQIcon,
+  WinampIcon
 } from './retroIcons';
 import RetroWindow from './components/RetroWindow';
 import FileExplorer from './components/FileExplorer';
 import Notepad from './components/Notepad';
 import EmailViewer from './components/EmailViewer';
 import InternetExplorer from './components/InternetExplorer';
+import RetroChat from './components/RetroChat';
+import WinampPlayer from './components/WinampPlayer';
 import PasswordDialog from './components/PasswordDialog';
 import SystemDialog from './components/SystemDialog';
 import Taskbar from './components/Taskbar';
@@ -284,6 +288,48 @@ export default function App() {
           }
         ]);
       }
+    } else if (appType === 'chat') {
+      const existing = windows.find((w) => w.id === 'icq_chat');
+      if (existing) {
+        bringToFront('icq_chat');
+      } else {
+        const nextZ = topZIndex + 1;
+        setTopZIndex(nextZ);
+        setActiveWindowId('icq_chat');
+        setWindows((prev) => [
+          ...prev,
+          {
+            id: 'icq_chat',
+            title: 'ICQ 98a - David (The Last User)',
+            icon: <ICQIcon size={14} />,
+            type: 'chat',
+            isOpen: true,
+            isMinimized: false,
+            zIndex: nextZ
+          }
+        ]);
+      }
+    } else if (appType === 'winamp') {
+      const existing = windows.find((w) => w.id === 'winamp_player');
+      if (existing) {
+        bringToFront('winamp_player');
+      } else {
+        const nextZ = topZIndex + 1;
+        setTopZIndex(nextZ);
+        setActiveWindowId('winamp_player');
+        setWindows((prev) => [
+          ...prev,
+          {
+            id: 'winamp_player',
+            title: 'WinAMP 2.0 - RetroAudio Player',
+            icon: <WinampIcon size={14} />,
+            type: 'winamp',
+            isOpen: true,
+            isMinimized: false,
+            zIndex: nextZ
+          }
+        ]);
+      }
     }
   };
 
@@ -295,6 +341,13 @@ export default function App() {
     if (file.clueId && !discoveredClues.includes(file.clueId)) {
       playClueSound();
       setDiscoveredClues((prev) => [...prev, file.clueId]);
+
+      // If user opens Read_Me_First, surprise them with David's ICQ message popup!
+      if (file.id === 'read_me') {
+        setTimeout(() => {
+          openAppWindow('chat');
+        }, 1200);
+      }
     }
 
     // Easter Egg 5: IMPORTANT.txt popup
@@ -607,6 +660,42 @@ export default function App() {
           <span className="win-desktop-icon-label">Recycle Bin</span>
         </div>
 
+        {/* David ICQ Chat (Digital Ghost) */}
+        <div
+          className={`win-desktop-icon ${selectedDesktopIcon === 'icq' ? 'selected' : ''}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            playClickSound();
+            setSelectedDesktopIcon('icq');
+          }}
+          onDoubleClick={(e) => {
+            e.stopPropagation();
+            openAppWindow('chat');
+          }}
+        >
+          <ICQIcon size={32} />
+          <span className="win-desktop-icon-label" style={{ color: '#88ff88', fontWeight: 'bold' }}>
+            David (ICQ 98)
+          </span>
+        </div>
+
+        {/* Winamp 2.0 Audio Player */}
+        <div
+          className={`win-desktop-icon ${selectedDesktopIcon === 'winamp' ? 'selected' : ''}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            playClickSound();
+            setSelectedDesktopIcon('winamp');
+          }}
+          onDoubleClick={(e) => {
+            e.stopPropagation();
+            openAppWindow('winamp');
+          }}
+        >
+          <WinampIcon size={32} />
+          <span className="win-desktop-icon-label">WinAMP 2.0</span>
+        </div>
+
         {/* Secret Archive (The Mystery Vault) */}
         <div
           className={`win-desktop-icon ${selectedDesktopIcon === 'secret_archive' ? 'selected' : ''}`}
@@ -678,6 +767,17 @@ export default function App() {
 
           {win.type === 'ie' && (
             <InternetExplorer />
+          )}
+
+          {win.type === 'chat' && (
+            <RetroChat
+              cluesCount={discoveredClues.length}
+              isVaultUnlocked={isVaultUnlocked}
+            />
+          )}
+
+          {win.type === 'winamp' && (
+            <WinampPlayer />
           )}
         </RetroWindow>
       ))}

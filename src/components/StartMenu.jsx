@@ -4,7 +4,9 @@ import {
   NotepadIcon,
   InternetExplorerIcon,
   MyDocumentsIcon,
-  SecretVaultIcon
+  SecretVaultIcon,
+  ICQIcon,
+  WinampIcon
 } from '../retroIcons';
 import { playClickSound } from '../soundEffects';
 
@@ -218,6 +220,26 @@ export default function StartMenu({
             >
               <InternetExplorerIcon size={16} />
               <span>Internet Explorer</span>
+            </div>
+            <div
+              className="win-start-item"
+              onClick={() => {
+                onOpenApp('chat');
+                onClose();
+              }}
+            >
+              <ICQIcon size={16} />
+              <span>David (ICQ 98)</span>
+            </div>
+            <div
+              className="win-start-item"
+              onClick={() => {
+                onOpenApp('winamp');
+                onClose();
+              }}
+            >
+              <WinampIcon size={16} />
+              <span>WinAMP 2.0</span>
             </div>
             <div
               className="win-start-item"
